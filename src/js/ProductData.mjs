@@ -1,19 +1,12 @@
-import backpacks from "../json/backpacks.json";
-import sleepingBags from "../json/sleeping-bags.json";
-import tents from "../json/tents.json";
-
-const productData = {
-  backpacks,
-  "sleeping-bags": sleepingBags,
-  tents,
-};
-
 export default class ProductData {
   constructor(category) {
     this.category = category;
+    this.path = `../json/${this.category}.json`;
   }
   getData() {
-    return Promise.resolve(productData[this.category]);
+    return fetch(this.path)
+      .then((response) => response.json())
+      .then((data) => data);
   }
   async findProductById(id) {
     const products = await this.getData();
