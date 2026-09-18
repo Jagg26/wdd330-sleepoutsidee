@@ -151,6 +151,41 @@ button {
   text-align: center;
 }
 
+.categories {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  list-style-type: none;
+  margin-top: 1rem;
+}
+
+.category-list a {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+  padding: 1rem;
+  color: var(--dark-grey);
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid var(--light-grey);
+}
+
+.category-list img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.category-list span {
+  font-family: var(--font-headline);
+  font-size: var(--large-font);
+}
+
 .products {
   margin-top: 2rem;
   padding: 1rem;
