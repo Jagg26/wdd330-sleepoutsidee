@@ -19,6 +19,14 @@ export function getParam(param) {
   const urlParams = new URLSearchParams(queryString);
   return urlParams.get(param);
 }
+
+export async function convertToJson(response) {
+  if (response.ok) {
+    return response.json();
+  }
+  throw new Error("Bad response from server");
+}
+
 export function renderListWithTemplate(
   templateFn,
   parentElement,
