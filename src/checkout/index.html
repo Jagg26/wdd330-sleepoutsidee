@@ -19,6 +19,96 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <div class="checkout-message" aria-live="polite"></div>
+        <form class="checkout-form">
+          <fieldset>
+            <legend>Shipping</legend>
+            <label>
+              First Name
+              <input name="fname" autocomplete="given-name" required />
+            </label>
+            <label>
+              Last Name
+              <input name="lname" autocomplete="family-name" required />
+            </label>
+            <label>
+              Street
+              <input name="street" autocomplete="address-line1" required />
+            </label>
+            <label>
+              City
+              <input name="city" autocomplete="address-level2" required />
+            </label>
+            <label>
+              State
+              <input
+                name="state"
+                autocomplete="address-level1"
+                maxlength="2"
+                minlength="2"
+                pattern="[A-Za-z]{2}"
+                required
+              />
+            </label>
+            <label>
+              ZIP
+              <input
+                name="zip"
+                autocomplete="postal-code"
+                inputmode="numeric"
+                pattern="[0-9]{5}"
+                required
+              />
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment</legend>
+            <label>
+              Card Number
+              <input
+                name="cardNumber"
+                autocomplete="cc-number"
+                inputmode="numeric"
+                pattern="[0-9 ]{13,23}"
+                required
+              />
+            </label>
+            <label>
+              Expiration
+              <input
+                name="expiration"
+                autocomplete="cc-exp"
+                inputmode="numeric"
+                placeholder="MM/YY"
+                pattern="(0[1-9]|1[0-2])/[0-9]{2}"
+                required
+              />
+            </label>
+            <label>
+              Security Code
+              <input
+                name="code"
+                autocomplete="cc-csc"
+                inputmode="numeric"
+                pattern="[0-9]{3,4}"
+                required
+              />
+            </label>
+          </fieldset>
+
+          <section class="order-summary" aria-live="polite">
+            <h3>Order Summary</h3>
+            <p>Subtotal: <span class="summary-subtotal">$0.00</span></p>
+            <p>Tax: <span class="summary-tax">$0.00</span></p>
+            <p>Shipping: <span class="summary-shipping">$0.00</span></p>
+            <p class="summary-total-row">
+              Total: <span class="summary-total">$0.00</span>
+            </p>
+          </section>
+
+          <button type="submit">Place Order</button>
+        </form>
       </section>
     </main>
 

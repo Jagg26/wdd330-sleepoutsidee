@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { addCartItem, addWishlistItem } from "./storage.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -14,17 +14,23 @@ export default class ProductDetails {
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addProductToCart.bind(this));
+    document
+      .getElementById("addToWishlist")
+      .addEventListener("click", this.addProductToWishlist.bind(this));
   }
 
   addProductToCart() {
-    const storedCart = getLocalStorage("so-cart");
-    const cartItems = Array.isArray(storedCart)
-      ? storedCart
-      : storedCart
-        ? [storedCart]
-        : [];
-    cartItems.push(this.product);
-    setLocalStorage("so-cart", cartItems);
+    addCartItem(this.product);
+    this.showSaveStatus("Added to cart.");
+  }
+
+  addProductToWishlist() {
+    addWishlistItem(this.product);
+    this.showSaveStatus("Saved to wishlist.");
+  }
+
+  showSaveStatus(message) {
+    document.querySelector(".product-detail__status").textContent = message;
   }
 
   renderProductDetails() {
@@ -43,7 +49,11 @@ export default class ProductDetails {
       </p>
       <div class="product-detail__add">
         <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
+        <button id="addToWishlist" data-id="${this.product.Id}" class="button-secondary">
+          Wishlist
+        </button>
       </div>
+      <p class="product-detail__status" aria-live="polite"></p>
     `;
   }
 }
